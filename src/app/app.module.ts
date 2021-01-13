@@ -8,6 +8,7 @@ import { AstaTwoComponent } from './components/asta-two/asta-two.component';
 import { AstaThreeComponent } from './components/asta-three/asta-three.component';
 import { PainterDirective } from './directives/painter.directive';
 import { AstaFiveComponent } from './components/asta-five/asta-five.component';
+import { AstaSixComponent } from './components/asta-six/asta-six.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AstaFiveComponent } from './components/asta-five/asta-five.component';
     AstaTwoComponent,
     AstaThreeComponent,
     PainterDirective,
-    AstaFiveComponent
+    AstaFiveComponent,
+    AstaSixComponent
   ],
   imports: [
     BrowserModule,

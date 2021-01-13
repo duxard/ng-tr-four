@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 interface ICat {
   a?: (number | string)[];
   b?: Array<number|string>;
-
-  mew(arr?: Array<{}>);
+  c?: [string];
+  employee?: [number, string];
 }
 
 @Component({
@@ -12,15 +12,7 @@ interface ICat {
   templateUrl: './asta-five.component.html',
   styleUrls: ['./asta-five.component.css']
 })
-export class AstaFiveComponent implements OnInit, ICat {
+export class AstaFiveComponent implements ICat {
   a = ['sdgf', 1];
-  b = ['sdgf', 1];
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-    mew() {
-  }
 }
 
