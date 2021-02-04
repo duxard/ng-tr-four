@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-asta-six',
@@ -7,17 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AstaSixComponent implements OnInit {
 
-  checked1 = true;
-  checked2 = false;
+  @Input() name;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  radioChange(e) {
-    this.checked1= !this.checked1;
-    this.checked2= !this.checked2;
-  }
 
 }

@@ -9,6 +9,17 @@ import { AstaThreeComponent } from './components/asta-three/asta-three.component
 import { PainterDirective } from './directives/painter.directive';
 import { AstaFiveComponent } from './components/asta-five/asta-five.component';
 import { AstaSixComponent } from './components/asta-six/asta-six.component';
+import { AstaSevenComponent } from './components/asta-seven/asta-seven.component';
+import {FormsModule} from '@angular/forms';
+import { AstaNineComponent } from './components/asta-nine/asta-nine.component';
+import { AstaTenComponent } from './components/asta-ten/asta-ten.component';
+import { AstaElevenComponent } from './components/asta-eleven/asta-eleven.component';
+import { AstaTwelveComponent } from './components/asta-twelve/asta-twelve.component';
+import { StunnerComponent } from './components/asta-twelve/stunner.component';
+import {USER_TOKEN} from './components/asta-twelve/userToken';
+import { AstaTwelveChildComponent } from './components/asta-twelve/asta-twelve-child.component';
+import { AstaAComponent } from './components/sharingData/asta-a.component';
+import { AstaBComponent } from './components/sharingData/asta-b.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +29,25 @@ import { AstaSixComponent } from './components/asta-six/asta-six.component';
     AstaThreeComponent,
     PainterDirective,
     AstaFiveComponent,
-    AstaSixComponent
+    AstaSixComponent,
+    AstaSevenComponent,
+    AstaNineComponent,
+    AstaTenComponent,
+    AstaElevenComponent,
+    AstaTwelveComponent,
+    StunnerComponent,
+    AstaTwelveChildComponent,
+    AstaAComponent,
+    AstaBComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

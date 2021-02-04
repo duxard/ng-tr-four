@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-tr-four';
+
+  updatePosts(event) {
+    console.log('Parent comp');
+    console.log(event);
+  }
 }

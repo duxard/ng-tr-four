@@ -1,0 +1,22 @@
+<div>
+  <p>Lorem ipsum dolor sit amet, consectetur.</p>
+</div>
+<button>Click</button>
+<div id="container">
+  <div>
+    <app-asta-six></app-asta-six>
+  </div>
+</div>
+<ng-container #cont>
+  <p>alex</p>
+  <div id="wrapper"><span>Apple</span></div>
+  <input type="text" [(ngModel)]="inputValue">
+  <input type="text" [value]="inputValue">
+</ng-container>
+<br>
+<button id="btnDelete" (click)="removeBtn($event)">Delete</button>
+<div #svDiv *ngIf="svInit">sv</div>
+
+<app-asta-six [name]="'Alex'"></app-asta-six>
+<p>{{message}}</p>
+<p>{{age}}</p>
