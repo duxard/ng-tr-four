@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ShareDataService} from './share-data.service';
 import {Subscription} from 'rxjs';
 
@@ -10,7 +10,7 @@ import {Subscription} from 'rxjs';
     <button (click)="requestForDataComponentAstaA()">Click</button>
   `
 })
-export class AstaBComponent implements OnInit, OnDestroy {
+export class AstaBComponent implements OnDestroy {
 
   private recieveDataResponseSubscription: Subscription;
 
@@ -21,9 +21,6 @@ export class AstaBComponent implements OnInit, OnDestroy {
     }, (error) => {
       console.log(error);
     });
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy() {

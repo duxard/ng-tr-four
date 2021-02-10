@@ -20,6 +20,11 @@ import {USER_TOKEN} from './components/asta-twelve/userToken';
 import { AstaTwelveChildComponent } from './components/asta-twelve/asta-twelve-child.component';
 import { AstaAComponent } from './components/sharingData/asta-a.component';
 import { AstaBComponent } from './components/sharingData/asta-b.component';
+import { AstaThirteenComponent } from './components/asta-thirteen/asta-thirteen.component';
+import { AstaFourteenComponent } from './components/asta-fourteen/asta-fourteen.component';
+import { AstaFourteenPipe } from './components/asta-fourteen/asta-fourteen.pipe';
+import { PaneDirective } from './components/asta-fourteen/pane.directive';
+import { AppIconComponent } from './components/asta-five/app-icon.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,12 @@ import { AstaBComponent } from './components/sharingData/asta-b.component';
     StunnerComponent,
     AstaTwelveChildComponent,
     AstaAComponent,
-    AstaBComponent
+    AstaBComponent,
+    AstaThirteenComponent,
+    AstaFourteenComponent,
+    AstaFourteenPipe,
+    PaneDirective,
+    AppIconComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {ShareDataService} from './share-data.service';
 import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-asta-a',
-  template: `<p>a</p>`
+  template: `<p>a</p>
+    <button (click)="foo()">Send data</button>
+  `
 })
-export class AstaAComponent implements OnInit, OnDestroy {
+export class AstaAComponent implements OnDestroy {
 
   private recieveDataRequestSubscription: Subscription;
 
@@ -19,17 +21,17 @@ export class AstaAComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
-
-  }
-
   ngOnDestroy() {
     this.recieveDataRequestSubscription.unsubscribe();
   }
 
   getCoords(): {} {
-    console.log('get coords');
     return { x: 1, y: 2 };
+  }
+
+  // or one can just send event to listener in another component
+  foo() {
+    this.shareDataService.sendDataResponse(this.getCoords());
   }
 
 }
