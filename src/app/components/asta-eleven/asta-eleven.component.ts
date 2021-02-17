@@ -19,7 +19,7 @@ interface Asta {
 @Component({
   selector: 'app-asta-eleven',
   templateUrl: './asta-eleven.component.html',
-  styleUrls: ['./asta-eleven.component.css']
+  styleUrls: ['./asta-eleven.component.scss']
 })
 export class AstaElevenComponent implements OnInit, AfterViewInit {
 

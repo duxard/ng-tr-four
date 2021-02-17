@@ -4,7 +4,7 @@ import {Post} from './post';
 @Component({
   selector: 'app-asta-nine',
   templateUrl: './asta-nine.component.html',
-  styleUrls: ['./asta-nine.component.css']
+  styleUrls: ['./asta-nine.component.scss']
 })
 export class AstaNineComponent implements OnInit {
 

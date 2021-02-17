@@ -16,7 +16,7 @@ import {AstaSixComponent} from '../asta-six/asta-six.component';
 @Component({
   selector: 'app-asta-seven',
   templateUrl: './asta-seven.component.html',
-  styleUrls: ['./asta-seven.component.css']
+  styleUrls: ['./asta-seven.component.scss']
 })
 export class AstaSevenComponent implements OnInit, AfterViewInit, AfterViewChecked {
 

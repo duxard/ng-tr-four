@@ -1,0 +1,263 @@
+CUSTOM DIRECTIVE
+
+@Directive({
+  selector: '[appIfNot]'
+})
+export class IfNotDirective {
+
+  @Input('appIfNot') set ifNot(condition: boolean) {
+    if (!condition) {
+      this.vc.createEmbeddedView(this.templateRef);
+    } else {
+      this.vc.clear();
+    }
+  }
+
+  constructor(private templateRef: TemplateRef<any>, 
+              private vc: ViewContainerRef) { }
+}
+
+
+
+<ng-content></ng-content>
+
+<div *appIfNot="isVisible">
+  <p>Lorem ipsum dolor sit amet.</p>
+</div>
+
+<ng-template [appIfNot]="isVisible">
+  <div>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+</ng-template>
+
+
+export class AstaFiveComponent {
+  isVisible = false;
+}
+
+--------------------------------------------------
+
+FORMS
+
+View:
+1) It's necessary to set "type" to all buttons 
+2) Add 'FormControlName' to the fields to bind these to FormGroup in TS component
+3) If form invalid - use special ng state 'invalid':  
+[disabled]="form.invalid"
+4)
+ng-touched/untouched - e.g. clicked and into the field and then moved away focus (without entering any info ito the field)
+ng-pristine - entered smth into the field
+ng-dirty - some info was entered into the field
+5) 
+Get value from form:
+this.form.get('form_control_name')
+6)
+this.form.patchValue({ formControl1: value,formControl2: value, ...})
+7)
+Get value from form group:
+this.form.get('form_group_name').get('form_control_name')
+8) Form reset:
+
+ngOnInit() {
+  ...
+  this.form.reset();
+}
+
+
+Component:
+1) Form data:
+
+ngOnInit() {
+  this.form = new FormGroup({
+    email: new FormControl('', [
+      Validators.email,
+      Validators.required
+    ]),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(6)
+    ])
+  })
+}
+
+
+Stylesheet
+
+1) Form validation (state's vizualization)
+
+input {
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
+}
+
+2) Show validation errors:
+
+.validation {
+    color: red;
+}
+
+<div class="form-control">
+  <label>Email</label>
+  <input type="text" placeholder="Email" formControlName="email">
+
+  <div
+    *ngIf="form.get('email').invalid && form.get('email').touched"
+    class="validation"
+  >
+    <small *ngIf="form.get('email').errors.required">
+      Поле email не может быть пустым
+    </small>
+
+    <small *ngIf="form.get('email').errors.email">
+      Введите корректный email
+    </small>
+  </div>
+</div>
+
+<div class="form-control">
+  <label>Пароль</label>
+  <input type="password" placeholder="Пароль" formControlName="password">
+
+  <div
+    *ngIf="form.get('password').invalid && form.get('password').touched"
+    class="validation"
+  >
+    <small *ngIf="form.get('password').errors.required">
+      Пароль не может быть пустым
+    </small>
+
+    <small *ngIf="form.get('password').errors.minlength">
+      Длинна должна быть не менее {{form.get('password').errors.minlength.requiredLength}}.
+      Сейчас количество символов {{form.get('password').errors.minlength.actualLength}}
+    </small>
+  </div>
+</div> 
+
+
+--------------------------------------------------
+
+Form Groups
+
+View:
+
+<div class="card" formGroupName="address">
+  <h2>Адрес</h2>
+
+  <div class="form-control">
+    <label>Страна</label>
+
+    <select formControlName="country">
+      <option value="ru">Россия</option>
+      <option value="ua">Украина</option>
+      <option value="by">Беларусь</option>
+    </select>
+  </div>
+
+  <div class="form-control">
+    <input type="text" formControlName="city" placeholder="Город">
+  </div>
+</div>
+
+TS:
+
+ngOnInit() {
+    this.form = new FormGroup({
+      ...,
+
+      address: new FormGroup({
+        country: new FormControl('by'),
+        city: new FormControl('Минск', Validators.required)
+      })
+    })
+  }
+
+------------------------------------------------
+
+Динамическое добавление элемент внутри формы:
+
+<div class="card" formGroupName="skills">
+  <h2>Ваши навыки</h2>
+  <button class="btn" type="button" (click)="addSkill()">Добавить умение</button>
+
+  <div class="form-control" *ngFor="let control of form.get('skills').controls; let idx = index">
+    <label>Умение {{idx + 1}}</label>
+    <input type="text" [formControlName]="idx">
+  </div>
+</div>
+
+addSkill() {
+  const control = new FormControl('', Validators.required);
+  // (<FormArray>this.form.get('skills'))
+  (this.form.get('skills') as FormArray).push(control)
+}
+
+
+--------------------------------------------------
+
+Custom validators 
+
+1ex - from newsfeed
+
+2ex:
+
+import {FormControl} from '@angular/forms'
+
+export class MyValidators {
+
+  static restrictedEmails(control: FormControl): {[key: string]: boolean} {
+    if (['v@mail.ru', 'test@mail.ru'].includes(control.value)) {
+      return {restrictedEmail: true}
+    }
+    return null
+  }
+
+}
+
+Usage:
+
+ngOnInit() {
+this.form = new FormGroup({
+  email: new FormControl('', [
+    Validators.email,
+    Validators.required,
+    MyValidators.restrictedEmails
+  ])
+
+
+  View (show error message):
+
+  <small *ngIf="form.get('email').errors.restrictedEmail">
+    Email {{form.get('email').value}} запрещен
+  </small>
+
+  --------------------------------------------------
+Async validators
+Пример исп-я: при регистрации email сходить на сервер и проверить есть ли уже такой
+
+export class MyValidators {
+  static uniqueEmailAsync(control: FormControl): Promise<any> | Observable<any> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        if (control.value === 'async@mail.ru') {
+          resolve({uniqEmail: true})
+        } else {
+          resolve(null)
+        }
+      }, 1000)
+    })
+  }
+}
+
+ngOnInit() {
+  this.form = new FormGroup({
+    email: new FormControl('', [ array_of_sync_validators ], [MyValidators.uniqueEmailAsync])
+  });
+}
+
+--------------------------------------------------

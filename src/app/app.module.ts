@@ -10,7 +10,7 @@ import { PainterDirective } from './directives/painter.directive';
 import { AstaFiveComponent } from './components/asta-five/asta-five.component';
 import { AstaSixComponent } from './components/asta-six/asta-six.component';
 import { AstaSevenComponent } from './components/asta-seven/asta-seven.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AstaNineComponent } from './components/asta-nine/asta-nine.component';
 import { AstaTenComponent } from './components/asta-ten/asta-ten.component';
 import { AstaElevenComponent } from './components/asta-eleven/asta-eleven.component';
@@ -25,6 +25,9 @@ import { AstaFourteenComponent } from './components/asta-fourteen/asta-fourteen.
 import { AstaFourteenPipe } from './components/asta-fourteen/asta-fourteen.pipe';
 import { PaneDirective } from './components/asta-fourteen/pane.directive';
 import { AppIconComponent } from './components/asta-five/app-icon.component';
+import { DirectOneDirective } from './components/asta-five/direct-one.directive';
+import { IfNotDirective } from './directives/if-not.directive';
+
 
 @NgModule({
   declarations: [
@@ -48,12 +51,16 @@ import { AppIconComponent } from './components/asta-five/app-icon.component';
     AstaFourteenComponent,
     AstaFourteenPipe,
     PaneDirective,
-    AppIconComponent
+    AppIconComponent,
+    DirectOneDirective,
+    IfNotDirective
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
 

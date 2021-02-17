@@ -6,4 +6,6 @@ import { Component, OnInit } from '@angular/core';
     <p>I'm an icon</p>
   `
 })
-export class AppIconComponent {}
+export class AppIconComponent {
+  ngOnInit() {}
+}

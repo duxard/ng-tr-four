@@ -17,7 +17,7 @@ import { AstaTwelveChildComponent } from './asta-twelve-child.component';
 
 @Component({
   selector: 'app-asta-twelve',
-  styleUrls: ['./asta-twelve.component.css'],
+  styleUrls: ['./asta-twelve.component.scss'],
   template: `
     <span>I am first span</span>
     <ng-container [ngTemplateOutlet]="tpl"></ng-container>

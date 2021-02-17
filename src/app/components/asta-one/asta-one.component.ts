@@ -4,7 +4,7 @@ import {ShareEventsService} from '../../services/share-events.service';
 @Component({
   selector: 'app-asta-one',
   templateUrl: './asta-one.component.html',
-  styleUrls: ['./asta-one.component.css']
+  styleUrls: ['./asta-one.component.scss']
 })
 export class AstaOneComponent implements OnInit {
 
