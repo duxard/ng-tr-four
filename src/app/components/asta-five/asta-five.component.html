@@ -1,16 +1,3 @@
-<div class="wrapper">
-
-  <form #form="ngForm" (submit)="onSubmit()">
-    <label for="title"></label>
-    <input type="text" name="title" [(ngModel)]="formControls.title" required>
-    <br>
-    <label for="descr"></label>
-    <input type="text" name="descr" [(ngModel)]="formControls.descr" required>
-    <br>
-    <button type="submit" [disabled]="form.invalid">Submit</button>
-  </form>
-
-  <pre>{{form.value | json}}</pre>
-  <pre>Form is invalid:{{form.invalid | json}}</pre>
-
-</div>
+<p>Hello</p>
+<button (click)="showDiv()">Click</button>
+<ng-template appRef></ng-template>

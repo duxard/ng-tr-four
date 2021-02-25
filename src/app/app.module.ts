@@ -27,6 +27,8 @@ import { PaneDirective } from './components/asta-fourteen/pane.directive';
 import { AppIconComponent } from './components/asta-five/app-icon.component';
 import { DirectOneDirective } from './components/asta-five/direct-one.directive';
 import { IfNotDirective } from './directives/if-not.directive';
+import { DivBoxComponent } from './components/asta-five/div-box.component';
+import { RefDirective } from './components/asta-five/ref.directive';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { IfNotDirective } from './directives/if-not.directive';
     PaneDirective,
     AppIconComponent,
     DirectOneDirective,
-    IfNotDirective
+    IfNotDirective,
+    DivBoxComponent,
+    RefDirective
     
   ],
   imports: [
@@ -62,6 +66,7 @@ import { IfNotDirective } from './directives/if-not.directive';
     FormsModule,
     ReactiveFormsModule
   ],
+  entryComponents: [DivBoxComponent],
   providers: [
 
   ],
