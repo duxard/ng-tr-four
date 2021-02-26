@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-div-box',
@@ -10,7 +9,7 @@ import { EventEmitter } from 'events';
 })
 export class DivBoxComponent implements OnInit {
 
-  @Output() close = new EventEmitter<void>();
+  @Output() close: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() { }
 
