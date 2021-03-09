@@ -29,6 +29,11 @@ import { DirectOneDirective } from './components/asta-five/direct-one.directive'
 import { IfNotDirective } from './directives/if-not.directive';
 import { DivBoxComponent } from './components/asta-five/div-box.component';
 import { RefDirective } from './components/asta-five/ref.directive';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { TstInputComponent } from './components/tst-input/tst-input.component';
+import { AstaFoteenComponent } from './components/asta-foteen/asta-foteen.component';
+import { AstaFifteenComponent } from './components/asta-fifteen/asta-fifteen.component';
 
 
 @NgModule({
@@ -57,14 +62,18 @@ import { RefDirective } from './components/asta-five/ref.directive';
     DirectOneDirective,
     IfNotDirective,
     DivBoxComponent,
-    RefDirective
+    RefDirective,
+    TstInputComponent,
+    AstaFoteenComponent,
+    AstaFifteenComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [DivBoxComponent],
   providers: [

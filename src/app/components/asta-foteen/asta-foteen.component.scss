@@ -1,0 +1,16 @@
+@mixin bd {
+  border: 1px solid red;
+}
+
+ :host {
+   .box {
+    @include bd();
+    h2 {
+      color: red;
+    }
+  }
+  
+  p {
+    color:pink;
+  }
+}
