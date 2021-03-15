@@ -2,6 +2,8 @@
   border: 1px solid red;
 }
 
+$txt-col: var(--text-color);
+
  :host {
    .box {
     @include bd();
@@ -11,6 +13,6 @@
   }
   
   p {
-    color:pink;
+    color: $txt-col;
   }
 }
