@@ -34,6 +34,7 @@ import { environment } from '../environments/environment';
 import { TstInputComponent } from './components/tst-input/tst-input.component';
 import { AstaFoteenComponent } from './components/asta-foteen/asta-foteen.component';
 import { AstaFifteenComponent } from './components/asta-fifteen/asta-fifteen.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { AstaFifteenComponent } from './components/asta-fifteen/asta-fifteen.com
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    FontAwesomeModule
   ],
   entryComponents: [DivBoxComponent],
   providers: [
