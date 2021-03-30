@@ -35,7 +35,8 @@ import { TstInputComponent } from './components/tst-input/tst-input.component';
 import { AstaFoteenComponent } from './components/asta-foteen/asta-foteen.component';
 import { AstaFifteenComponent } from './components/asta-fifteen/asta-fifteen.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { BaseAPIToken, SampleNameToken } from './app.config';
+import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RefDirective,
     TstInputComponent,
     AstaFoteenComponent,
-    AstaFifteenComponent
+    AstaFifteenComponent,
+    BannerComponent
     
   ],
   imports: [
@@ -79,7 +81,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   entryComponents: [DivBoxComponent],
   providers: [
-
+    
   ],
   bootstrap: [AppComponent]
 })
