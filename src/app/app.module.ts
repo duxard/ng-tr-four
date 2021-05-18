@@ -37,6 +37,8 @@ import { AstaFifteenComponent } from './components/asta-fifteen/asta-fifteen.com
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BaseAPIToken, SampleNameToken } from './app.config';
 import { BannerComponent } from './components/banner/banner.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { AstaSixteenComponent } from './components/asta-sixteen/asta-sixteen.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { BannerComponent } from './components/banner/banner.component';
     TstInputComponent,
     AstaFoteenComponent,
     AstaFifteenComponent,
-    BannerComponent
+    BannerComponent,
+    WelcomeComponent,
+    AstaSixteenComponent
     
   ],
   imports: [

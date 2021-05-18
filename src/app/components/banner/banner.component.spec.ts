@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -16,11 +16,13 @@ describe('BannerComponent', () => {
     })
     .compileComponents();
   }));
-
   beforeEach(() => {
     fixture = TestBed.createComponent(BannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+  afterEach(() => {
+    fixture.destroy();
   });
 
   it('should create toBeTruthy', () => {
@@ -67,18 +69,36 @@ describe('BannerComponent', () => {
     const hostElement = fixture.nativeElement;
     const nameInput: HTMLInputElement = hostElement.querySelector('input');
     const nameDisplay: HTMLElement = hostElement.querySelector('span.hero');
-  
     // simulate user entering a new name into the input box
     nameInput.value = 'quick BROWN fOxie';
-  
     // Dispatch a DOM event so that Angular learns of input value change.
     nameInput.dispatchEvent(new Event('input'));
-  
     // Tell Angular to update the display binding through the title pipe
     fixture.detectChanges();
-  
     expect(nameDisplay.textContent).toBe('Quick Brown Foxie');
   });
 
+  it('tests: Event Emitter - emit value on btn click - debugElement [sync]', () => {
+    // spy on event emitter
+    spyOn(component.sendOutEmitter, 'emit');
+
+    // trigger the click
+    const hitBtnDe: DebugElement = fixture.debugElement.query(By.css('.hit-btn'));
+    hitBtnDe.triggerEventHandler('click', null);
+
+    fixture.detectChanges();
+    expect(component.sendOutEmitter.emit).toHaveBeenCalledWith('hello');
+  });
+
+  it('tests: Event Emitter - emit value on btn click - nativeElement [sync]', () => {
+    spyOn(component.sendOutEmitter, 'emit');
+
+    const nativeElement = fixture.debugElement.nativeElement;
+    const button = nativeElement.querySelector('.hit-btn');
+    button.dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+    expect(component.sendOutEmitter.emit).toHaveBeenCalledWith('hello');
+  });
 
 });

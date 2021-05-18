@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-banner',
   template: `
     <h1>{{title}}</h1>
+
     <p>
       <span>banner works!</span>
       <span class="inner">lorem</span>
@@ -15,19 +16,20 @@ import { Component, OnInit } from '@angular/core';
       <input id="name" [(ngModel)]="hero.name" placeholder="name" />
     </div>
 
+    <button (click)="handleClick()" class="hit-btn">Hit</button>
   `,
   styles: ['h1 { color: green; font-size: 350%}']
 })
 export class BannerComponent implements OnInit {
-  title = 'Banner';
+  @Output() sendOutEmitter: EventEmitter<any> = new EventEmitter();
 
-  hero = {
-    name: ''
-  }
+  title = 'Banner';
+  hero = { name: '' }
 
   constructor() { }
+  ngOnInit(): void { }
 
-  ngOnInit(): void {
+  handleClick() {
+    this.sendOutEmitter.emit('hello');
   }
-
 }
